@@ -1,7 +1,9 @@
 package com.bitcoin.bitcoin.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Ticker {
 
     @JsonProperty("ticker")
@@ -15,10 +17,13 @@ public class Ticker {
         this.ticker = ticker;
     }
 
+    // Classe interna para representar os dados do ticker
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class TickerData {
+
+        @JsonProperty("last")
         private double last;
 
-        // Corrigido para retornar um double
         public double getLast() {
             return last;
         }
